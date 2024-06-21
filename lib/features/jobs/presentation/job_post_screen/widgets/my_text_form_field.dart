@@ -8,7 +8,7 @@ class MyTextFormField extends StatelessWidget {
   const MyTextFormField({
     required this.hintText,
     required this.textEditingController,
-    // required this.onChanged,
+    required this.onChanged,
     this.textCapitalization = TextCapitalization.words,
     this.keyboardType = TextInputType.text,
     this.suffix,
@@ -17,6 +17,7 @@ class MyTextFormField extends StatelessWidget {
     this.maxLength,
     this.textInputAction,
     this.onFieldSubmitted,
+    this.validator,
     super.key,
   });
 
@@ -30,7 +31,8 @@ class MyTextFormField extends StatelessWidget {
   final TextInputAction? textInputAction;
   final TextEditingController textEditingController;
   final Function(String value)? onFieldSubmitted;
-  // final Function(String value) onChanged;
+  final Function(String value) onChanged;
+  final String? Function(String? value)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +68,8 @@ class MyTextFormField extends StatelessWidget {
         minLines: minLines,
         maxLength: maxLength,
         textInputAction: textInputAction ?? TextInputAction.next,
+        validator: validator,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: hintText,
@@ -78,7 +82,7 @@ class MyTextFormField extends StatelessWidget {
           suffix: suffix,
         ),
         onFieldSubmitted: onFieldSubmitted,
-        // onChanged: onChanged,
+        onChanged: onChanged,
       ),
     );
   }
