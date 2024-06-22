@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart'
     as inset;
 
-import '../../../../../core/theme/colors.dart';
+import '../../../../../../core/theme/colors.dart';
 
 class MyTextFormField extends StatelessWidget {
   const MyTextFormField({
@@ -18,6 +18,7 @@ class MyTextFormField extends StatelessWidget {
     this.textInputAction,
     this.onFieldSubmitted,
     this.validator,
+    this.readOnly,
     super.key,
   });
 
@@ -33,6 +34,7 @@ class MyTextFormField extends StatelessWidget {
   final Function(String value)? onFieldSubmitted;
   final Function(String value) onChanged;
   final String? Function(String? value)? validator;
+  final bool? readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +69,7 @@ class MyTextFormField extends StatelessWidget {
         maxLines: maxLines,
         minLines: minLines,
         maxLength: maxLength,
+        readOnly: readOnly??false,
         textInputAction: textInputAction ?? TextInputAction.next,
         validator: validator,
         autovalidateMode: AutovalidateMode.onUserInteraction,

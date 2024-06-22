@@ -1,17 +1,32 @@
+import 'package:hive_flutter/adapters.dart';
+
+part 'enums.g.dart';
+
+@HiveType(typeId: 0)
 enum JobType {
+  @HiveField(0)
   fullTime,
+  @HiveField(1)
   partTime,
 }
 
+@HiveType(typeId: 1)
 enum JobLocation {
+  @HiveField(0)
   onsite,
+  @HiveField(1)
   remote,
 }
 
+@HiveType(typeId: 2)
 enum Currency {
+  @HiveField(0)
   inr,
+  @HiveField(1)
   usd,
+  @HiveField(2)
   eur,
+  @HiveField(3)
   cad,
 }
 
